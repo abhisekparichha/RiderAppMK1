@@ -1,0 +1,29 @@
+name: RiderMeshApp
+options:
+  bundleIdPrefix: com.ridermesh
+  deploymentTarget:
+    iOS: 15.0
+settings:
+  BASE_SDK: iphoneos
+  IPHONEOS_DEPLOYMENT_TARGET: 15.0
+  SWIFT_VERSION: 5.9
+  DEVELOPMENT_TEAM: ""
+targets:
+  RiderMeshApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Resources
+    settings:
+      INFOPLIST_FILE: Resources/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.ridermesh.app
+      CODE_SIGN_ENTITLEMENTS: RiderMeshApp.entitlements
+    dependencies: []
+  RiderMeshAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/RiderMeshAppTests
+    dependencies:
+      - target: RiderMeshApp
