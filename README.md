@@ -15,3 +15,10 @@ Experimental offline mesh networking concept for Android and iOS riders. Android
 3. Enable Bluetooth/Wi-Fi entitlements when prompted and run on two devices.
 
 Unit tests live under `android-app/app/src/test` and `ios-app/Tests`. Use the debug screens to inspect message routing and peer health.
+
+## CLI Build & Test Scripts
+
+Scripts live in `scripts/` to help CI or headless testing:
+
+- `scripts/build_android.sh`: Assembles a debug APK via the Gradle wrapper inside `android-app/`. Run `cd android-app && gradle wrapper` once if `gradlew` is missing, then execute the script from the repo root (or any path). Resulting APK is copied to the repo root as `app-debug.apk`.
+- `scripts/build_ios.sh`: Generates the Xcode project with XcodeGen (if needed) and runs `xcodebuild clean test` for the `RiderMeshApp` scheme against the default simulator (`platform=iOS Simulator,name=iPhone 15`). Override the destination by setting the `DESTINATION` env var before running.
